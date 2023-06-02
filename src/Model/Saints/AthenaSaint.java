@@ -1,12 +1,15 @@
 package Model.Saints;
 
-import Model.Interfaces.SpecialTechnique;
+import Model.Enum.Constelation;
+import Model.Enum.SpecialTechniques;
 
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public abstract class AthenaSaint implements SpecialTechnique {
+public class AthenaSaint  {
 
     private String name;
 
@@ -27,6 +30,10 @@ public abstract class AthenaSaint implements SpecialTechnique {
     private int hp;
     private int power;
 
+    private ArrayList<SpecialTechniques> specialTechinques;
+
+
+
 
     public AthenaSaint(String name, String constelation,int age, int height, String birthday, char bloodtype, String birthplace, String trainingGround, int hp, int power) {
         this.name = name;
@@ -39,6 +46,9 @@ public abstract class AthenaSaint implements SpecialTechnique {
         this.trainingGround = trainingGround;
         this.hp = hp;
         this.power = power;
+        this.specialTechinques = new ArrayList<>();
+        addspecials();
+
     }
 
     public AthenaSaint() {
@@ -52,6 +62,7 @@ public abstract class AthenaSaint implements SpecialTechnique {
         trainingGround = "";
         hp= 0;
         power = 0;
+        specialTechinques = new ArrayList<>();
 
     }
 
@@ -135,6 +146,9 @@ public abstract class AthenaSaint implements SpecialTechnique {
         this.power = power;
     }
 
+    public ArrayList<SpecialTechniques> getSpecialTechinques() {
+        return specialTechinques;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -187,6 +201,8 @@ public abstract class AthenaSaint implements SpecialTechnique {
     }
 
 
+
+
     /**
      * fighting techniques
      */
@@ -200,5 +216,31 @@ public abstract class AthenaSaint implements SpecialTechnique {
     {
         return "Your cosmos is not high enough to harm me.";
     }
+
+
+    private void addspecials()
+    {
+        if(getName().compareTo("Seiya") == 0)
+        {
+            specialTechinques.add(SpecialTechniques.PEGASUS_COMET);
+            specialTechinques.add(SpecialTechniques.PEGASUS_GALACTIC_PUNCH);
+            specialTechinques.add(SpecialTechniques.PEGASUS_RYU_SEI_KEN);
+        }
+        else if(getName().compareTo("Hyoga") == 0 )
+        {
+            specialTechinques.add(SpecialTechniques.AURORA_EXECUTION);
+            specialTechinques.add(SpecialTechniques.AURORA_RAY);
+            specialTechinques.add(SpecialTechniques.DIAMOND_DUST);
+        }
+        else if (getName().compareTo("Shiryu") == 0)
+        {
+            specialTechinques.add(SpecialTechniques.DRAGON_FORCE);
+            specialTechinques.add(SpecialTechniques.DRAGON_RAGE);
+            specialTechinques.add(SpecialTechniques.GREAT_DRAGON);
+            specialTechinques.add(SpecialTechniques.ASCENDING_DRAGON);
+            specialTechinques.add(SpecialTechniques.LAST_DRAGON);
+        }
+    }
+
 
 }

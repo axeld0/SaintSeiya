@@ -1,8 +1,8 @@
 package Model.JSON;
 
+import Model.Enum.SpecialTechniques;
 import Model.Saints.AthenaSaint;
 import Model.Saints.BronzeSaints;
-import Model.Saints.PegasusSaint;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,8 +26,12 @@ public class JSONControler {
                 jsonObject.put("Birthplace", saint.getBirthplace());
                 jsonObject.put("Hp", saint.getHp());
                 jsonObject.put("Power", saint.getPower());
-                jsonObject.put("Special Technique", saint.specialTech());
-
+                JSONArray jsonArrayTech = new JSONArray();
+                for(SpecialTechniques s : saint.getSpecialTechinques())
+                {
+                    jsonArrayTech.put(s.getShout());
+                }
+                jsonObject.put("Special Techniques" , jsonArrayTech);
                 jsonArray.put(jsonObject);
                 JSONSave.save(jsonArray, "Athena's Saints.");
             }
